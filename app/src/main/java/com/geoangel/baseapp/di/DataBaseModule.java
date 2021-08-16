@@ -1,19 +1,14 @@
 package com.geoangel.baseapp.di;
 
 import android.app.Application;
-
 import androidx.room.Room;
-
-import com.geoangel.baseapp.db.PokeDao;
-import com.geoangel.baseapp.db.PokemonDB;
-
+import com.geoangel.baseapp.db.DemoDao;
+import com.geoangel.baseapp.db.DemoDB;
 import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
 import dagger.hilt.android.components.ApplicationComponent;
-
 
 
 @Module
@@ -22,8 +17,8 @@ public class DataBaseModule {
 
     @Provides
     @Singleton
-    public static PokemonDB providePokemonDB(Application application){
-         return Room.databaseBuilder(application,PokemonDB.class,"Favorite Database")
+    public static DemoDB provideDemoDB(Application application){
+         return Room.databaseBuilder(application, DemoDB.class,"User Database")
                  .fallbackToDestructiveMigration()
                  .allowMainThreadQueries()
                  .build();
@@ -31,7 +26,7 @@ public class DataBaseModule {
 
     @Provides
     @Singleton
-    public static PokeDao providePokeDao(PokemonDB pokemonDB){
-        return pokemonDB.pokeDao();
+    public static DemoDao provideDemoDao(DemoDB demoDB){
+        return demoDB.demoDao();
     }
 }

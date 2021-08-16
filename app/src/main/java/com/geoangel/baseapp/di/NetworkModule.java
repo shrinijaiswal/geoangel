@@ -1,6 +1,6 @@
 package com.geoangel.baseapp.di;
 
-import com.geoangel.baseapp.network.PokeApiService;
+import com.geoangel.baseapp.network.ApiService;
 
 import javax.inject.Singleton;
 
@@ -12,9 +12,7 @@ import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by Abhinav Singh on 17,June,2020
- */
+
 
 @Module
 @InstallIn(ApplicationComponent.class)
@@ -22,13 +20,13 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    public static PokeApiService providePokemonApiService(){
+    public static ApiService provideApiService(){
 
         return  new Retrofit.Builder()
-                .baseUrl(" https://pokeapi.co/api/v2/")
+                .baseUrl(" https://baseUrl")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .build()
-                .create(PokeApiService.class);
+                .create(ApiService.class);
     }
 }

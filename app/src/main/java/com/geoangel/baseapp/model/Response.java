@@ -2,15 +2,13 @@ package com.geoangel.baseapp.model;
 
 import java.util.ArrayList;
 
-/**
- * Created by Abhinav Singh on 17,June,2020
- */
-public class PokemonResponse {
+
+public class Response {
     private Integer count;
     private String next,previous;
-    private ArrayList<Pokemon> results;
+    private ArrayList<Demo> results;
 
-    public PokemonResponse(Integer count, String next, String previous, ArrayList<Pokemon> results) {
+    public Response(Integer count, String next, String previous, ArrayList<Demo> results) {
         this.count = count;
         this.next = next;
         this.previous = previous;
@@ -41,11 +39,11 @@ public class PokemonResponse {
         this.previous = previous;
     }
 
-    public ArrayList<Pokemon> getResults() {
+    public ArrayList<Demo> getResults() {
         return results;
     }
 
-    public void setResults(ArrayList<Pokemon> results) {
+    public void setResults(ArrayList<Demo> results) {
         this.results = results;
     }
 }

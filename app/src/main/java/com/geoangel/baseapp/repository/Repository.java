@@ -2,10 +2,10 @@ package com.geoangel.baseapp.repository;
 
 import androidx.lifecycle.LiveData;
 
-import com.geoangel.baseapp.db.PokeDao;
-import com.geoangel.baseapp.model.Pokemon;
-import com.geoangel.baseapp.model.PokemonResponse;
-import com.geoangel.baseapp.network.PokeApiService;
+import com.geoangel.baseapp.db.DemoDao;
+import com.geoangel.baseapp.model.Demo;
+import com.geoangel.baseapp.model.Response;
+import com.geoangel.baseapp.network.ApiService;
 
 import java.util.List;
 
@@ -13,39 +13,35 @@ import javax.inject.Inject;
 
 import io.reactivex.rxjava3.core.Observable;
 
-/**
- * Created by Abhinav Singh on 17,June,2020
- */
-
 public class Repository {
 
-    private PokeDao pokeDao;
-    private PokeApiService apiService;
+    private DemoDao demoDao;
+    private ApiService apiService;
 
     @Inject
-    public Repository(PokeDao pokeDao, PokeApiService apiService) {
-        this.pokeDao = pokeDao;
+    public Repository(DemoDao demoDao, ApiService apiService) {
+        this.demoDao = demoDao;
         this.apiService = apiService;
     }
 
 
-    public Observable<PokemonResponse> getPokemons(){
-        return apiService.getPokemons();
+    public Observable<Response> get(){
+        return apiService.getResponse();
     }
 
-    public void insertPokemon(Pokemon pokemon){
-        pokeDao.insertPokemon(pokemon);
+    public void insert(Demo data){
+        demoDao.insert(data);
     }
 
-    public void deletePokemon(String pokemonName){
-        pokeDao.deletePokemon(pokemonName);
+    public void delete(String dataName){
+        demoDao.delete(dataName);
     }
 
     public void deleteAll(){
-        pokeDao.deleteAll();
+        demoDao.deleteAll();
     }
 
-    public LiveData<List<Pokemon>> getFavoritePokemon(){
-        return pokeDao.getFavoritePokemons();
+    public LiveData<List<Demo>> getFavorite(){
+        return demoDao.getFavorite();
     }
 }

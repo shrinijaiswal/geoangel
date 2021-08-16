@@ -3,11 +3,9 @@ package com.geoangel.baseapp.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-/**
- * Created by Abhinav Singh on 17,June,2020
- */
-@Entity(tableName = "favorite_table")
-public class Pokemon {
+
+@Entity(tableName = "Demo")
+public class Demo {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -15,7 +13,7 @@ public class Pokemon {
 
     private String url;
 
-    public Pokemon(String name, String url) {
+    public Demo(String name, String url) {
         this.name = name;
         this.url = url;
     }
